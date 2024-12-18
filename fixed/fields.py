@@ -1,12 +1,12 @@
 # Copyright (c) 2012 Simplistix Ltd
 # See license.txt for license details.
 
-from constants import one_of
+from .constants import one_of
 
 class Ordered(object):
     order = 0
-    def __new__(cls, *args, **kw):
-        obj = object.__new__(cls, *args, **kw)
+    def __new__(cls, *args, **kwargs):
+        obj = super().__new__(cls)
         obj.order = Ordered.order
         Ordered.order += 1
         return obj

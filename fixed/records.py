@@ -4,8 +4,8 @@
 from collections import namedtuple
 from operator import attrgetter
 
-from exceptions import Problem, ConversionError
-from fields import Discriminator, Ordered, Skip
+from .exceptions import Problem, ConversionError
+from .fields import Discriminator, Ordered, Skip
 
 class RecordMeta(type):
 

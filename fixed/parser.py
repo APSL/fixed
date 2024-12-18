@@ -4,8 +4,8 @@
 from collections import namedtuple
 from operator import attrgetter
 
-from exceptions import UnknownRecordType
-from records import Record
+from .exceptions import UnknownRecordType
+from .records import Record
 
 class ParserMeta(type):
 

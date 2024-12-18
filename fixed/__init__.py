@@ -4,12 +4,12 @@
 from collections import namedtuple
 from operator import attrgetter
 
-from fields import Field, Discriminator, Skip
-from constants import Constant, one_of, all
-from exceptions import Problem, FixedException, UnknownRecordType, ConversionError
-from records import Record
-from parser import Parser
-from handler import Handler, handles
+from .fields import Field, Discriminator, Skip
+from .constants import Constant, one_of, all
+from .exceptions import Problem, FixedException, UnknownRecordType, ConversionError
+from .records import Record
+from .parser import Parser
+from .handler import Handler, handles
 
 # helpers
 
