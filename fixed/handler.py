@@ -1,7 +1,7 @@
 # Copyright (c) 2012 Simplistix Ltd
 # See license.txt for license details.
 
-from exceptions import FixedException
+from .exceptions import FixedException
 
 class HandlerMeta(type):
     

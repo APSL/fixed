@@ -19,30 +19,30 @@ class ParserMeta(type):
                 discs[disc.slice.start, disc.slice.stop] = disc
                 records.append(obj)
                 record_mapping[disc.text] = obj
-        discs = discs.values()
+        discs = list(discs.values())
         if len(discs)>1:
             raise TypeError('Inconsistent discriminators: %r' % discs)
         if discs:
             dict_['disc_slice'] = discs[0].slice
-        parser = type.__new__(cls, class_name, bases, dict_)
+        parser = super().__new__(cls, class_name, bases, dict_)
         for record in records:
             record._parser = parser
         return parser
 
 ignore = object()
 
-class Parser(object):
+class Parser(object, metaclass=ParserMeta):
 
-    __metaclass__ = ParserMeta
+    #__metaclass__ = ParserMeta
     
     def __init__(self, iterable, parse_only=None, parse_unknown=True):
         self.iterable = iterable
         self.parse_unknown = parse_unknown
         if parse_only:
             record_mapping = {}
-            for k, type in self.record_mapping.items():
-                if type in parse_only:
-                    t = type
+            for k, type_ in self.record_mapping.items():
+                if type_ in parse_only:
+                    t = type_
                 else:
                     t = ignore
                 record_mapping[k] = t
